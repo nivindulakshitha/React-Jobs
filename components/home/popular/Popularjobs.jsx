@@ -5,11 +5,12 @@ import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
+import { useFetch } from '../../../hook/useFetch'
 
 const Popularjobs = () => {
 	const router = useRouter();
-	const isLoading = false;
-	const errorLoading = false;
+
+	const { data, isLoading, error, refetch } = useFetch('search', { query: 'React Developer', num_paes: 1 });
 
 	return (
 		<View style={styles.container}>
