@@ -5,12 +5,12 @@ import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react
 import styles from './popularjobs.style'
 import { COLORS, SIZES } from '../../../constants'
 import PopularJobCard from '../../common/cards/popular/PopularJobCard'
-import { useFetch } from '../../../hook/useFetch'
+import useFetch from '../../../hook/useFetch'
 
 const Popularjobs = () => {
 	const router = useRouter();
 
-	const { data, isLoading, error, refetch } = useFetch('search', { query: 'React Developer', num_paes: 1 });
+	const { data, isLoading, error, refetch } = useFetch('search', { query: 'React developer', num_pages: 1 });
 
 	return (
 		<View style={styles.container}>
@@ -24,7 +24,7 @@ const Popularjobs = () => {
 			<View style={styles.cardsContainer}>
 				{isLoading ? (
 					<ActivityIndicator size="large" color={COLORS.primary} />
-				) : errorLoading ? (
+				) : error ? (
 					<Text style={styles.errorText}>Error loading data</Text>
 				): (
 					<FlatList
