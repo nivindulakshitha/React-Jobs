@@ -9,18 +9,18 @@ const Company = ({ logo, jobTitle, companyName, location }) => {
 	const [companyLogo, setcompanyLogo] = useState('https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg')
 
 	useEffect(() => {
-		if (checkImageURL(logo)) {
+		if (logo != null && checkImageURL(logo)) {
 			setcompanyLogo(logo)
 		} else {
 			setcompanyLogo('https://t4.ftcdn.net/jpg/05/05/61/73/360_F_505617309_NN1CW7diNmGXJfMicpY9eXHKV4sqzO5H.jpg')
 		}
-	}, [companyLogo])
+	}, [logo])
 
   return (
 	  <View style={styles.container}>
 		  <View style={styles.logoBox}>
 			<Image 
-				source={{ uri: companyLogo }}
+				source={{uri: companyLogo}}
 				  resizeMode='contain'
 				  style={styles.logoImage}
 			/>
