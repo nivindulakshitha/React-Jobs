@@ -28,7 +28,7 @@ const Popularjobs = () => {
 					<Text style={styles.errorText}>Error loading data</Text>
 				): (
 					<FlatList
-						data={[1, 2, 3, 4, 5]}
+						data={data.data}
 						renderItem={({ item }) => <PopularJobCard item={item} />}
 						keyExtractor={item => item?.job_id}
 						contentContainerStyle={{columnGap: SIZES.medium}}
