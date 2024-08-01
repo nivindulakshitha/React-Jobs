@@ -39,7 +39,14 @@ const jobDetails = () => {
                     />
                 );
             }
-            case "Responsibilities": {}
+            case "Responsibilities": {
+                return (
+                    <Specifics
+                        title='Responsibilities'
+                        points={job.job_highlights?.Responsibilities??['No data available']}  
+                    />
+                );
+            }
             default: break;
         }
     }
