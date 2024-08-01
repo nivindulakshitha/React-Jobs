@@ -16,7 +16,7 @@ const jobDetails = () => {
     const { data, isLoading, error, refetch } = useFetch('job-details', {
         job_id: params.id
     });
-    
+
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => { };
 
@@ -35,7 +35,7 @@ const jobDetails = () => {
                 return (
                     <Specifics
                         title='Qualifications'
-                        points={job.job_highlights?.Qualifications??['No data available']}  
+                        points={job.job_highlights?.Qualifications ?? ['No data available']}
                     />
                 );
             }
@@ -43,7 +43,7 @@ const jobDetails = () => {
                 return (
                     <Specifics
                         title='Responsibilities'
-                        points={job.job_highlights?.Responsibilities??['No data available']}  
+                        points={job.job_highlights?.Responsibilities ?? ['No data available']}
                     />
                 );
             }
@@ -84,7 +84,7 @@ const jobDetails = () => {
                             : data.length === 0 ?
                                 (<Text>No data available</Text>)
                                 : (<View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
-                                    <Company 
+                                    <Company
                                         logo={data[0].employer_logo}
                                         jobTitle={data[0].job_title}
                                         companyName={data[0].employer_name}
@@ -99,6 +99,8 @@ const jobDetails = () => {
                                 </View>)
                     }
                 </ScrollView>
+
+                <JobFooter url={data?.job_google_link ?? 'https://careers.google.com/jobs/results'} />
             </>
         </SafeAreaView>
     )
