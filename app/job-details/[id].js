@@ -16,7 +16,7 @@ const jobDetails = () => {
     const { data, isLoading, error, refetch } = useFetch('job-details', {
         job_id: params.id
     });
-
+    
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => { };
 
@@ -29,7 +29,7 @@ const jobDetails = () => {
                 return (
                     <Specifics
                         title='Qualifications'
-                        points={job.job_highlights?.qualifications??['No data available']}  
+                        points={job.job_highlights?.Qualifications??['No data available']}  
                     />
                 );
             }
