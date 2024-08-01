@@ -26,7 +26,7 @@ const NearByJobs = () => {
 			  ) : error ? (
 				  <Text style={styles.errorText}>Something went wrong</Text>
 			  ) : (
-				  data.data?.map((job) => (
+				  data?.map((job) => (
 					  <NearbyJobCard
 						  job={job}
 						  key={job?.job_id}

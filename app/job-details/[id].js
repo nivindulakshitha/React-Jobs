@@ -44,7 +44,6 @@ const jobDetails = () => {
             <>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-
                     {isLoading ?
                         (<ActivityIndicator size='large' color={COLORS.primary} />)
                         : error ?
@@ -53,7 +52,7 @@ const jobDetails = () => {
                                 (<Text>No data available</Text>)
                                 : (<View style={{ padding: SIZES.medium, paddingBottom: 100 }}>
                                     <Company 
-                                        companyLogo={data[0].employer_logo}
+                                        logo={data[0].employer_logo}
                                         jobTitle={data[0].job_title}
                                         companyName={data[0].employer_name}
                                         location={data[0].job_country}
