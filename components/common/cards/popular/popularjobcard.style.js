@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
     borderRadius: SIZES.medium,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   }),
   logoImage: {
     width: "70%",
