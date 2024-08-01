@@ -7,6 +7,8 @@ import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics } fro
 import { COLORS, icons, SIZES } from "../../constants";
 import useFetch from "../../hook/useFetch";
 
+const tabs = ["About", "Qualifications", "Responsibilities"];
+
 const jobDetails = () => {
     const params = useLocalSearchParams();
     const router = useRouter();
@@ -18,6 +20,24 @@ const jobDetails = () => {
     const [refreshing, setRefreshing] = useState(false);
     const onRefresh = () => { };
 
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+
+    const displayTabContent = (tab, job) => {
+        switch (tab) {
+            case "About": {}
+            case "Qualifications": {
+                return (
+                    <Specifics
+                        title='Qualifications'
+                        points={job.job_highlights?.qualifications??['No data available']}  
+                    />
+                );
+            }
+            case "Responsibilities": {}
+            default: break;
+        }
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
             <Stack.Screen options={{
@@ -26,14 +46,14 @@ const jobDetails = () => {
                 headerBackVisible: false,
                 headerLeft: () => (
                     <ScreenHeaderBtn
-                        icon={icons.left}
+                        iconUrl={icons.left}
                         dimension='60%'
                         handlePress={() => router.back()}
                     />
                 ),
                 headerRight: () => (
                     <ScreenHeaderBtn
-                        icon={icons.share}
+                        iconUrl={icons.share}
                         dimension='60%'
                     />
                 ),
@@ -57,10 +77,12 @@ const jobDetails = () => {
                                         companyName={data[0].employer_name}
                                         location={data[0].job_country}
                                     />
-                                    <JobTabs />
-                                    <JobAbout data={data.job} />
-                                    <Specifics data={data.job} />
-                                    <JobFooter data={data.job} />
+                                    <JobTabs
+                                        tabs={tabs}
+                                        activeTab={activeTab}
+                                        setActiveTab={setActiveTab}
+                                    />
+                                    {displayTabContent(activeTab, data[0])}
                                 </View>)
                     }
                 </ScrollView>
